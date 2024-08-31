@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 700px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 600;
+}
+
+.pipeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="file"] + label {
+    background-color: #00bcd4;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+input[type="file"] + label:hover {
+    background-color: #0097a7;
+}
+
+.circuit-line {
+    width: 120px;
+    height: 4px;
+    background-color: #ddd;
+    margin: 25px 0;
+    transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.circuit-line.active {
+    background-color: #4caf50;
+    box-shadow: 0 0 12px #4caf50, 0 0 24px #4caf50;
+}
+
+.merge-point {
+    background-color: #eceff1;
+    border-radius: 50%;
+    padding: 25px;
+    font-size: 20px;
+    color: #333;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.merge-point.active {
+    background-color: #ffeb3b;
+    box-shadow: 0 0 12px #ffeb3b, 0 0 24px #ffeb3b;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #388e3c;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}

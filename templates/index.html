@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Merge Pipeline</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>File Merge and Download</h1>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <div class="pipeline">
+                <div class="upload-section">
+                    <div class="file-upload">
+                        <input type="file" name="file1" id="fileInput1" />
+                        <label for="fileInput1">Upload Emercury Report</label>
+                    </div>
+                    <div class="circuit-line" id="circuit1"></div>
+                    <div class="file-upload">
+                        <input type="file" name="file2" id="fileInput2" />
+                        <label for="fileInput2">Upload Performance Report</label>
+                    </div>
+                </div>
+                <div class="merge-point" id="mergePoint">
+                    <p>Merging Files</p>
+                </div>
+                <div class="circuit-line" id="circuit3"></div>
+                <div class="download-section">
+                    <button id="downloadBtn" type="submit" disabled>Download Merged File</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
