@@ -7,31 +7,46 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>File Merge and Download</h1>
-        <form action="/" method="POST" enctype="multipart/form-data">
-            <div class="pipeline">
-                <div class="upload-section">
-                    <div class="file-upload">
-                        <input type="file" name="file1" id="fileInput1" />
-                        <label for="fileInput1">Upload Emercury Report</label>
+    <header style=" width: 30%;display: flex;justify-content: center; align-items: center;">
+        <h1 style="line-height: 1.6;" >Emercury Report</h1>
+    </header>
+    <div style="width: 70%;" class="right">
+        <div class="wrapper">
+        
+            <main>
+                <form action="/" method="POST" enctype="multipart/form-data">
+                    <div class="upload-container">
+                        <div class="upload-item">
+                            <input type="file" name="file1" id="fileInput1" />
+                            <label for="fileInput1">Upload Emercury Report</label>
+                        </div>
+                        <div class="upload-item">
+                            <input type="file" name="file2" id="fileInput2" />
+                            <label for="fileInput2" style="width: 200px;">Upload Performance Report</label>
+                        </div>
                     </div>
-                    <div class="circuit-line" id="circuit1"></div>
-                    <div class="file-upload">
-                        <input type="file" name="file2" id="fileInput2" />
-                        <label for="fileInput2">Upload Performance Report</label>
+                    <div class="status-container">
+                        <div class="status-line" id="statusLine1"></div>
+                        <div class="status-circle" id="statusCircle">
+                            <p id="text">Processing</p>
+                        </div>
+                        <div class="status-line" id="statusLine2"></div>
                     </div>
-                </div>
-                <div class="merge-point" id="mergePoint">
-                    <p>Merging Files</p>
-                </div>
-                <div class="circuit-line" id="circuit3"></div>
-                <div class="download-section">
-                    <button id="downloadBtn" type="submit" disabled>Download Merged File</button>
-                </div>
-            </div>
-        </form>
+                    <div class="download-container">
+                        <button id="downloadBtn" type="submit" disabled>Download Report</button>
+                    </div>
+                    
+                </form>
+            </main>
+            
+            
+        </div>
+        <footer>
+            <p>Created by D-eveloper</p>
+        </footer>
+
     </div>
+    
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

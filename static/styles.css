@@ -1,54 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+/* Reset and basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
     margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    position: relative;
 }
 
-.container {
+
+.wrapper {
     background-color: #ffffff;
     padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
     text-align: center;
-    width: 700px;
-    position: relative;
-    transition: all 0.3s ease;
+    transition: all 0.8s ease;
+   
+}
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('/static/bg1.jpg');
+    background-size: cover; /* Or contain */
+    background-position: left; /* Or adjust as needed */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Optional */
+     /* Ensure div takes full width */
+    
 }
 
-.container:hover {
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
-}
-
-h1 {
-    font-size: 28px;
-    margin-bottom: 30px;
-    color: #333;
+header {
+    background: linear-gradient(180deg,#0073BA,#5ba2ca );
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
     font-weight: 600;
 }
 
-.pipeline {
+
+
+main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    margin-top: auto;
+    
 }
 
-.upload-section {
+.upload-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 30px;
 }
 
-.file-upload {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.upload-item {
+    position: relative;
+    width: 48%;
 }
 
 input[type="file"] {
@@ -56,72 +81,84 @@ input[type="file"] {
 }
 
 input[type="file"] + label {
-    background-color: #00bcd4;
+    display: block;
+    background-color: #007bff;
     color: white;
-    padding: 12px 25px;
-    border-radius: 25px;
+    padding: 12px;
+    border-radius: 4px;
+    text-align: center;
     cursor: pointer;
-    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="file"] + label:hover {
+    background-color: #0056b3;
+}
+
+.status-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.status-line {
+    flex: 1;
+    height: 4px;
+    background-color: #007bff;
+    transition: background-color 0.3s ease;
+}
+
+.status-circle {
+    background-color: #e9ecef;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.status-circle p {
+    font-size: 16px;
+    color: #007bff;
+}
+
+.download-container {
+    text-align: center;
+}
+
+button {
+    background-color: #004d40;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
     font-size: 16px;
     font-weight: 600;
     transition: background-color 0.3s ease;
 }
 
-input[type="file"] + label:hover {
-    background-color: #0097a7;
-}
-
-.circuit-line {
-    width: 120px;
-    height: 4px;
-    background-color: #ddd;
-    margin: 25px 0;
-    transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-}
-
-.circuit-line.active {
-    background-color: #4caf50;
-    box-shadow: 0 0 12px #4caf50, 0 0 24px #4caf50;
-}
-
-.merge-point {
-    background-color: #eceff1;
-    border-radius: 50%;
-    padding: 25px;
-    font-size: 20px;
-    color: #333;
-    width: 160px;
-    height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 25px;
-    transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-}
-
-.merge-point.active {
-    background-color: #ffeb3b;
-    box-shadow: 0 0 12px #ffeb3b, 0 0 24px #ffeb3b;
-}
-
-button {
-    background-color: #4caf50;
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 600;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
 button:disabled {
-    background-color: #ccc;
+    background-color: #c6c6c6;
     cursor: not-allowed;
 }
 
 button:hover:not(:disabled) {
-    background-color: #388e3c;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background-color: #218838;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg,#5ba2ca,#0073BA );
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 70%;
+    margin-left: 28%;
 }
