@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Merge Pipeline</title>
+    <title>ReportFusion</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="/static/images/logo.png" type="image/x-icon">
 </head>
 <body>
-    <header style=" width: 30%;display: flex;justify-content: center; align-items: center;">
-        <h1 style="line-height: 1.6;" >Emercury Report</h1>
+    <header style=" width: 30%;display: flex;justify-content: center; align-items: center; box-shadow: 10px 0px 15px rgba(0, 0, 0, 0.2);">
+        <div><img src="/static/images/logo.png" alt="" style="width: 40%;"></div>
+        <h1 style="line-height: 1.5;" >Report Fusion🔥</h1>
     </header>
     <div style="width: 70%;" class="right">
         <div class="wrapper">
@@ -18,17 +20,17 @@
                     <div class="upload-container">
                         <div class="upload-item">
                             <input type="file" name="file1" id="fileInput1" />
-                            <label for="fileInput1">Upload Emercury Report</label>
+                            <label for="fileInput1" style="font-weight: bold;">Upload Emercury Report</label>
                         </div>
                         <div class="upload-item">
                             <input type="file" name="file2" id="fileInput2" />
-                            <label for="fileInput2" style="width: 200px;">Upload Performance Report</label>
+                            <label for="fileInput2" style="width: 200px; font-weight: bold;">Upload Performance Report</label>
                         </div>
                     </div>
                     <div class="status-container">
                         <div class="status-line" id="statusLine1"></div>
                         <div class="status-circle" id="statusCircle">
-                            <p id="text">Processing</p>
+                            <p id="text"style="font-weight: bold;">Processing</p>
                         </div>
                         <div class="status-line" id="statusLine2"></div>
                     </div>
@@ -41,8 +43,8 @@
             
             
         </div>
-        <footer>
-            <p>Created by D-eveloper</p>
+        <footer >
+            <p style="font-weight: bold;">&copy; Code by: <span style="color: #b92236;">D</span>-Velop Hub <span style="color: #b92236;">❤</span></p>
         </footer>
 
     </div>

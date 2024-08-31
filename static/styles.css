@@ -35,7 +35,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url('/static/bg1.jpg');
+    background-image: url('/static/images/bg1.jpg');
     background-size: cover; /* Or contain */
     background-position: left; /* Or adjust as needed */
     background-repeat: no-repeat;
@@ -51,6 +51,8 @@ header {
     text-align: center;
     font-size: 24px;
     font-weight: 600;
+    display: flex;
+    flex-direction: column;
 }
 
 
