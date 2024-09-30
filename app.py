@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, send_file
-import pandas as pd  # Assuming you're working with CSV/Excel files
+import pandas as pd  
 import io
 from openpyxl import load_workbook
 
@@ -73,7 +73,12 @@ def merge_files(file1, file2):
 
     # Process df2 to add List_id
     df2['Source (Sub Publisher)'] = df2['Source (Sub Publisher)'].astype(str)
-    df2['List_id'] = df2['Source (Sub Publisher)'].apply(lambda x: int(x.split('_')[-1]) if (x.split('_')[-1]).isdigit() else x.split('_')[-1] )
+    df2['List_id'] = df2['Source (Sub Publisher)'].apply(lambda x: int(x.split('_')[-1]) if (x.split('_')[-1]).isdigit() else x.split('_')[-1])
+
+    # Ensure numeric columns are properly handled
+    df2['Unique Clicks'] = pd.to_numeric(df2['Unique Clicks'], errors='coerce')
+    df2['Gross Clicks'] = pd.to_numeric(df2['Gross Clicks'], errors='coerce')
+    df2['Payout'] = pd.to_numeric(df2['Payout'], errors='coerce')
 
     # Rearrange columns to place List_id next to Source (Sub Publisher)
     columns = list(df2.columns)
