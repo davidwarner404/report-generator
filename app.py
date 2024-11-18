@@ -8,24 +8,40 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        if 'file1' not in request.files or 'file2' not in request.files:
+        form_id = request.form.get('form_id')  # Get the form_id from the submitted form
+        
+
+        # Ensure the correct files are provided based on the form
+        if form_id == 'EM01':
+            formater='EM01.xlsx'
+            file1 = request.files.get('file1')
+            file2 = request.files.get('file2')
+        elif form_id == 'EM02':
+            formater='EM02.xlsx'
+            file1 = request.files.get('file3')
+            file2 = request.files.get('file4')
+        else:
+            return redirect(request.url)  # Redirect if no valid form_id is found
+
+        # Validate that files are uploaded
+        if not file1 or not file2 or file1.filename == '' or file2.filename == '':
             return redirect(request.url)
 
-        file1 = request.files['file1']
-        file2 = request.files['file2']
-
-        if file1.filename == '' or file2.filename == '':
-            return redirect(request.url)
-
+        # Process files if both are provided
         if file1 and file2:
-            output_buffer = merge_files(file1, file2)
+            output_buffer = merge_files(file1, file2,formater)  # Assuming `merge_files` is implemented
 
             # Return the buffer as a downloadable file
-            return send_file(output_buffer, as_attachment=True, download_name='merged_file.xlsx', mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+            return send_file(
+                output_buffer,
+                as_attachment=True,
+                download_name=f'merged_file_{form_id}.xlsx',  # Name file based on form_id
+                mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
 
     return render_template('index.html')
 
-def merge_files(file1, file2):
+def merge_files(file1, file2,formater):
     # Read the files into DataFrames
     df1 = pd.read_excel(file1)
     df2 = pd.read_excel(file2)
@@ -46,7 +62,7 @@ def merge_files(file1, file2):
     buffer.seek(0)
 
     # Load sheet1 for merging
-    wb = load_workbook('sheet1.xlsx')
+    wb = load_workbook(formater)
     ws = wb.active
 
     # Convert the sheet1 data to a pandas DataFrame
@@ -109,4 +125,4 @@ def merge_files(file1, file2):
     return buffer
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

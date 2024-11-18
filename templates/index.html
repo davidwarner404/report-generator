@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,25 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="icon" href="/static/images/logo.png" type="image/x-icon">
 </head>
+
 <body>
-    <header style=" width: 30%;display: flex;justify-content: center; align-items: center; box-shadow: 10px 0px 15px rgba(0, 0, 0, 0.2);">
+    <header
+        style=" width: 30%;display: flex;justify-content: center; align-items: center; box-shadow: 10px 0px 15px rgba(0, 0, 0, 0.2);">
         <div><img src="/static/images/logo.png" alt="" style="width: 40%;"></div>
-        <h1 style="line-height: 1.5;" >Report Fusion🔥</h1>
+        <h1 style="line-height: 1.5;">Report Fusion🔥</h1>
     </header>
     <div style="width: 70%;" class="right">
+
+
         <div class="wrapper">
-        
-            <main>
+            <div class="tab-bar">
+                <button class="tab-button active" onclick="openTab(event, 'EM01')">EM-01</button>
+                <button class="tab-button" onclick="openTab(event, 'EM02')">EM-02</button>
+            </div>
+
+            <div class="tab-content" id="EM01">
                 <form action="/" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="form_id" value="EM01">
                     <div class="upload-container">
                         <div class="upload-item">
                             <input type="file" name="file1" id="fileInput1" />
@@ -24,31 +34,63 @@
                         </div>
                         <div class="upload-item">
                             <input type="file" name="file2" id="fileInput2" />
-                            <label for="fileInput2" style="width: 200px; font-weight: bold;">Upload Performance Report</label>
+                            <label for="fileInput2" style="width: 200px; font-weight: bold;">Upload Performance
+                                Report</label>
                         </div>
                     </div>
                     <div class="status-container">
                         <div class="status-line" id="statusLine1"></div>
-                        <div class="status-circle" id="statusCircle">
-                            <p id="text"style="font-weight: bold;">Processing</p>
+                        <div class="status-circle" id="statusCircle1">
+                            <p id="text1" style="font-weight: bold;">Processing</p>
                         </div>
                         <div class="status-line" id="statusLine2"></div>
                     </div>
                     <div class="download-container">
-                        <button id="downloadBtn" type="submit" disabled>Download Report</button>
+                        <button id="downloadBtn01" type="submit" disabled>Download Report</button>
                     </div>
-                    
+
                 </form>
-            </main>
-            
-            
+            </div>
+
+            <div class="tab-content" id="EM02">
+                <form action="/" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="form_id" value="EM02">
+                    <div class="upload-container">
+                        <div class="upload-item">
+                            <input type="file" name="file3" id="fileInput3" />
+                            <label for="fileInput3" style="font-weight: bold;">Upload Emercury Report</label>
+                        </div>
+                        <div class="upload-item">
+                            <input type="file" name="file4" id="fileInput4" />
+                            <label for="fileInput4" style="width: 200px; font-weight: bold;">Upload Performance
+                                Report</label>
+                        </div>
+                    </div>
+                    <div class="status-container">
+                        <div class="status-line" id="statusLine3"></div>
+                        <div class="status-circle" id="statusCircle2">
+                            <p id="text2" style="font-weight: bold;">Processing</p>
+                        </div>
+                        <div class="status-line" id="statusLine4"></div>
+                    </div>
+                    <div class="download-container">
+                        <button id="downloadBtn02" type="submit" disabled>Download Report</button>
+                    </div>
+
+                </form>
+            </div>
+
+
         </div>
-        <footer >
-            <p style="font-weight: bold;">&copy; Code by: <span style="color: #b92236;">D</span>-Velop Hub <span style="color: #b92236;">❤</span></p>
-        </footer>
+    </div>
+    <footer>
+        <p style="font-weight: bold;">&copy; Code by: <span style="color: #b92236;">D</span>-Velop Hub <span
+                style="color: #b92236;">❤</span></p>
+    </footer>
 
     </div>
-    
+
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
+
 </html>
